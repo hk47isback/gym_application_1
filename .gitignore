@@ -95,6 +95,9 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# Generated files
-**/*.g.dart
+# Generated files (exclude Hive adapters)
+# **/*.g.dart  # Commented out to allow Hive adapters
 **/*.freezed.dart
+
+# Exception: Keep Hive adapters for cloud builds
+!lib/models/*.g.dart

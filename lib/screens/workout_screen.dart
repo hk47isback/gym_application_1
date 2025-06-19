@@ -6,7 +6,6 @@ import '../models/streak.dart';
 import '../models/weekly_plan.dart';
 import '../services/hive_service.dart';
 import '../services/data_initialization_service.dart';
-import '../services/workout_service.dart';
 import '../widgets/workout_timer.dart';
 import 'package:uuid/uuid.dart';
 

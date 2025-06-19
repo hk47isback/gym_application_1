@@ -12,7 +12,7 @@ class WorkoutService extends ChangeNotifier {
 
   WeeklyPlan? _todaysWorkout;
   List<Exercise> _todaysExercises = [];
-  List<WorkoutEntry> _currentExercises = [];
+  final List<WorkoutEntry> _currentExercises = [];
   bool _isSessionActive = false;
   DateTime? _sessionStartTime;
 

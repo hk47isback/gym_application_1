@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-// Models
+// Models (Hive adapters are automatically included via part files)
 import '../models/user_profile.dart';
 import '../models/muscle_group.dart';
 import '../models/exercise.dart';
