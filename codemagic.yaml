@@ -4,16 +4,18 @@ workflows:
     name: iOS Workflow
     max_build_duration: 120
     instance_type: mac_mini_m1
-    integrations:
-      app_store_connect: codemagic
+    # Comment out app store integration for development builds
+    # integrations:
+    #   app_store_connect: codemagic
     environment:
       flutter: stable
       xcode: latest
       cocoapods: default
     scripts:
-      - name: Set up code signing settings on Xcode project
-        script: |
-          xcode-project use-profiles
+      # Comment out code signing for development
+      # - name: Set up code signing settings on Xcode project
+      #   script: |
+      #     xcode-project use-profiles
       - name: Get Flutter packages
         script: |
           flutter packages pub get
@@ -26,11 +28,16 @@ workflows:
       - name: Flutter test
         script: |
           flutter test
-      - name: Flutter build ipa
+      # Build development IPA without code signing
+      - name: Flutter build ipa (development)
         script: |
-          flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
+          flutter build ios --debug --no-codesign
+          mkdir -p build/ios/ipa
+          cd build/ios/iphoneos
+          zip -r ../ipa/app-debug.ipa Runner.app
     artifacts:
       - build/ios/ipa/*.ipa
+      - build/ios/iphoneos/Runner.app/**
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
